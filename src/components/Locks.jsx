@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchDto } from '../utils/fetchFunctions';
-import { bateryDto } from '../utils/bateryFunctions';
+import { getBatteryIconAndColor } from '../utils/bateryFunctions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Locks = () => {
@@ -19,22 +19,18 @@ const Locks = () => {
     <div className="locks-container">
       <h2>Cerraduras:</h2>
       {clientLocksData.length > 0 ? (
-        clientLocksData.map((lock) => (
-          <div key={lock.lockId} className="lock-item">
-            <h3 className="lock-alias">{lock.lockAlias}</h3>
-            <div className="battery-container">
-              <FontAwesomeIcon icon={bateryDto.getBatteryIcon(lock.electricQuantity)} />
-              <div className="battery">
-                <div
-                  className="level"
-                  style={{ width: `${lock.electricQuantity}%`, backgroundColor: bateryDto.getBatteryColor(lock.electricQuantity) }}
-                >
-                  {lock.electricQuantity}%
-                </div>
+        clientLocksData.map((lock) => {
+          const { icon, color } = getBatteryIconAndColor(lock.electricQuantity);
+          return (
+            <div key={lock.lockId} className="lock-item">
+              <h3 className="lock-alias">{lock.lockAlias}</h3>
+              <div className="battery-container">
+                <FontAwesomeIcon icon={icon} style={{ color: color, fontSize: '50px' }} />
+                {lock.electricQuantity}%
               </div>
             </div>
-          </div>
-        ))
+          );
+        })
       ) : (
         <p>Loading locks...</p>
       )}

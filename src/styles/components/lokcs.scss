@@ -40,24 +40,5 @@
         margin-right: 10px;
       }
     }
-
-    .battery {
-      flex-grow: 1;
-      height: 20px;
-      border-radius: 10px;
-      background-color: #ddd;
-      overflow: hidden;
-
-      .level {
-        height: 100%;
-        background-color: #4caf50;
-        width: 0;
-        transition: width 0.5s ease-in-out;
-        text-align: center;
-        line-height: 20px;
-        color: white;
-        font-weight: bold;
-      }
-    }
   }
 }
