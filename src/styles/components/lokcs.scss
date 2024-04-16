@@ -1,0 +1,63 @@
+.locks-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .lock-item {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    .lock-alias {
+      font-size: 16px;
+      color: $grey;
+      margin-bottom: 5px;
+    }
+
+    .battery-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+
+      .fa-battery-full,
+      .fa-battery-three-quarters,
+      .fa-battery-half,
+      .fa-battery-quarter,
+      .fa-battery-empty {
+        font-size: 24px;
+        color: #666;
+        margin-right: 10px;
+      }
+    }
+
+    .battery {
+      flex-grow: 1;
+      height: 20px;
+      border-radius: 10px;
+      background-color: #ddd;
+      overflow: hidden;
+
+      .level {
+        height: 100%;
+        background-color: #4caf50;
+        width: 0;
+        transition: width 0.5s ease-in-out;
+        text-align: center;
+        line-height: 20px;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+}
