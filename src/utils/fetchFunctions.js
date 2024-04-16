@@ -21,7 +21,7 @@ const getAllLocksByClientId = async () => {
   }
 };
 
-const getLocksById = async (lockId) => {
+const getLockDetailById = async (lockId) => {
   const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
   const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
   const CLIENT_TOKEN = import.meta.env.VITE_REACT_APP_CLIENT_TOKEN;
@@ -46,5 +46,5 @@ const getLocksById = async (lockId) => {
 
 export const fetchDto = {
   getAllLocksByClientId,
-  getLocksById,
+  getLockDetailById,
 };

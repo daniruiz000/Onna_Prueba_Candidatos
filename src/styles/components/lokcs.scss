@@ -1,44 +1,56 @@
 .locks-container {
-  max-width: 600px;
-  margin: 20px auto;
+  max-width: 90%;
+  margin: 20px;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-  h2 {
+  &__title {
     color: #333;
     text-align: center;
     margin-bottom: 20px;
   }
+}
 
-  .lock-item {
+.lock-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  width: 70%;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px auto 5px auto;
+
+  &__data-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     padding: 10px;
     margin: 10px 0;
-    background-color: $white;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    flex-direction: column;
+  }
 
-    .lock-alias {
-      font-size: 16px;
-      color: $grey;
-      margin-bottom: 5px;
-    }
+  &__alias {
+    font-size: 16px;
+    color: $grey;
+    margin-bottom: 5px;
+  }
 
-    .battery-container {
-      display: flex;
-      align-items: center;
-      margin-bottom: 5px;
+  &__gear {
+    color: $grey;
+    font-size: 50px;
+  }
+}
 
-      .fa-battery-full,
-      .fa-battery-three-quarters,
-      .fa-battery-half,
-      .fa-battery-quarter,
-      .fa-battery-empty {
-        font-size: 24px;
-        color: #666;
-        margin-right: 10px;
-      }
-    }
+.battery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__charge {
+    font-size: 16px;
+    color: $grey;
   }
 }
