@@ -14,7 +14,10 @@ const LockItem = ({ lock }) => {
           <h2 className="battery-container__charge">{lock.electricQuantity}%</h2>
         </div>
       </div>
-      <FontAwesomeIcon icon={faGear} className="lock-item__gear" style={{ fontSize: '50px', color: 'grey' }} />
+      <div className="lock-item__gear-container">
+        <FontAwesomeIcon icon={faGear} className="lock-item__gear-big" />
+        <FontAwesomeIcon icon={faGear} className="lock-item__gear-small" />
+      </div>
     </div>
   );
 };
