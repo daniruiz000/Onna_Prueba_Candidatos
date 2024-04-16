@@ -9,19 +9,15 @@ const getAllLocksByClientId = async () => {
         Accept: 'application/json',
       },
     });
-    console.log(`${API_URL}?clientId=${CLIENT_ID}`);
+
     if (response.ok) {
       const data = await response.json();
-      console.log('Data retrieved successfully:', data);
       return data;
     } else {
-      const errorText = await response.text();
-      console.error('Error in response:', errorText);
       throw new Error('Failed to fetch data');
     }
   } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error;
+    throw new Error('Failed to fetch data');
   }
 };
 
