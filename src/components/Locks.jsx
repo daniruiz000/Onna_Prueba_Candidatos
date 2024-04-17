@@ -3,6 +3,7 @@ import { fetchDto } from '../utils/fetchFunctions';
 
 import LockItem from './LockItem';
 import Separator from './Separator';
+import Header from './Header';
 
 const Locks = () => {
   const [clientLocksData, setClientLocksData] = useState([]);
@@ -18,6 +19,7 @@ const Locks = () => {
 
   return (
     <div>
+      <Header />
       <div className="locks-container__text-box">
         <h2 className="locks-container__wellcome">Bienvenido</h2>
         <h2 className="locks-container__user-name">{storedUsername}</h2>

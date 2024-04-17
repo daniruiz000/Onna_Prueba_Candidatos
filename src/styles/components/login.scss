@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 170px auto;
+  margin: 100px auto;
 
   &__title {
     font-size: 24px;
@@ -37,17 +37,19 @@
   &__button {
     padding: 10px 20px;
     margin-top: 10px;
-    background-color: #007bff;
+    background-color: $grey;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 70%;
+    align-self: center;
   }
 
   &__button:hover {
-    background-color: #0056b3;
+    background-color: #9c9c9c;
   }
 
   &__error {

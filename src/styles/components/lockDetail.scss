@@ -1,14 +1,16 @@
 .lock-detail {
   display: flex;
   flex-direction: column;
-  padding: 20px;
   align-items: center;
 
   &__back-button {
     align-self: flex-start;
     border: none;
     background-color: transparent;
-    margin-bottom: 20px;
+    align-self: flex-start;
+    border: none;
+    background-color: transparent;
+    margin: 20px 0 10px 20px;
   }
 
   &__status-container {

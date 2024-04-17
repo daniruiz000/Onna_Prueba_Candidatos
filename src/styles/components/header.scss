@@ -1,0 +1,17 @@
+.header {
+  background: #d3d3d3;
+  text-align: center;
+  padding: 20px;
+  height: 70px;
+
+  &__title {
+    font-size: 36px;
+    margin: 0;
+  }
+
+  &__img {
+    width: 200px;
+    margin: 10px auto;
+    align-self: center;
+  }
+}

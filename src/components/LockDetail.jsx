@@ -9,6 +9,7 @@ import PasswordList from './PasswordList';
 import NewPasswordForm from './NewPasswordForm';
 import LockActions from './LockActions';
 import Separator from './Separator';
+import Header from './Header';
 
 const LockDetail = () => {
   const { id } = useParams();
@@ -87,42 +88,45 @@ const LockDetail = () => {
   if (!actualLock) return <StatusMessage message="No se encontraron detalles para la cerradura." type="not-found" />;
 
   return (
-    <div className="lock-detail">
-      <BackButton />
-      <LockDetails actualLock={actualLock} lockId={actualLock.lockId} />
-      <Separator />
-      <div className="lock-detail__tabs">
-        <button className={`lock-detail__tab ${activeTab === 'passwords' ? 'active' : ''}`} onClick={() => handleTabChange('passwords')}>
-          PASSWORDS
-        </button>
-        <button className={`lock-detail__tab ${activeTab === 'actions' ? 'active' : ''}`} onClick={() => handleTabChange('actions')}>
-          ACTIONS
-        </button>
+    <>
+      <Header />
+      <div className="lock-detail">
+        <BackButton />
+        <LockDetails actualLock={actualLock} lockId={actualLock.lockId} />
+        <Separator />
+        <div className="lock-detail__tabs">
+          <button className={`lock-detail__tab ${activeTab === 'passwords' ? 'active' : ''}`} onClick={() => handleTabChange('passwords')}>
+            PASSWORDS
+          </button>
+          <button className={`lock-detail__tab ${activeTab === 'actions' ? 'active' : ''}`} onClick={() => handleTabChange('actions')}>
+            ACTIONS
+          </button>
+        </div>
+
+        {activeTab === 'passwords' && (
+          <div>
+            <PasswordList lockPasswords={lockPasswords} handleDeletePassword={handleDeletePassword} />{' '}
+          </div>
+        )}
+
+        {activeTab === 'actions' && (
+          <div className="lock-detail__actions">
+            <LockActions lockId={actualLock.lockId} fetchData={fetchData} />
+            <NewPasswordForm
+              passwordName={passwordName}
+              startDate={startDate}
+              endDate={endDate}
+              passwordType={passwordType}
+              setPasswordName={setPasswordName}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+              setPasswordType={setPasswordType}
+              handleCreatePassword={handleCreatePassword}
+            />
+          </div>
+        )}
       </div>
-
-      {activeTab === 'passwords' && (
-        <div>
-          <PasswordList lockPasswords={lockPasswords} handleDeletePassword={handleDeletePassword} />{' '}
-        </div>
-      )}
-
-      {activeTab === 'actions' && (
-        <div className="lock-detail__actions">
-          <LockActions lockId={actualLock.lockId} fetchData={fetchData} />
-          <NewPasswordForm
-            passwordName={passwordName}
-            startDate={startDate}
-            endDate={endDate}
-            passwordType={passwordType}
-            setPasswordName={setPasswordName}
-            setStartDate={setStartDate}
-            setEndDate={setEndDate}
-            setPasswordType={setPasswordType}
-            handleCreatePassword={handleCreatePassword}
-          />
-        </div>
-      )}
-    </div>
+    </>
   );
 };
 
