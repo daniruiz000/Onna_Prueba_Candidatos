@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { fetchDto } from '../utils/fetchFunctions';
+
 import LockItem from './LockItem';
+import Separator from './Separator';
 
 const Locks = () => {
   const [clientLocksData, setClientLocksData] = useState([]);
-
+  const storedUsername = import.meta.env.VITE_REACT_APP_USERNAME;
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchDto.getAllLocksByClientId();
@@ -15,9 +17,15 @@ const Locks = () => {
   }, []);
 
   return (
-    <div className="locks-container">
-      <h2 className="locks-container__title">Cerraduras:</h2>
-      {clientLocksData ? clientLocksData.map((lock) => <LockItem key={lock.lockId} lock={lock} />) : <p>Loading locks...</p>}
+    <div>
+      <div className="locks-container__text-box">
+        <h2 className="locks-container__wellcome">Bienvenido</h2>
+        <h2 className="locks-container__user-name">{storedUsername}</h2>
+      </div>
+
+      <Separator />
+      <h2 className="locks-container__title">Tus Cerraduras Asociadas:</h2>
+      <div className="locks-container">{clientLocksData && clientLocksData.map((lock) => <LockItem key={lock.lockId} lock={lock} />)}</div>
     </div>
   );
 };

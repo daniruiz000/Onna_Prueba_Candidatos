@@ -34,13 +34,15 @@
   &__tabs {
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 5px;
     margin-bottom: 5px;
   }
 
   &__tab {
-    border: none;
-    background-color: transparent;
+    border: transparent;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-size: 22px;
     padding: 10px;
@@ -76,7 +78,7 @@
   }
 
   &__alias {
-    font-size: 25px;
+    font-size: 30px;
     margin-bottom: 20px;
     align-self: center;
   }
@@ -194,6 +196,7 @@
   &__loading,
   &__error,
   &__not-found {
+    margin: 200px auto;
     font-size: 16px;
     color: #333;
     text-align: center;

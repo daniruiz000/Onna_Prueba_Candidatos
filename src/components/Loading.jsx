@@ -1,12 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Gear = () => {
+const Loading = () => {
   return (
-    <div className="gear">
+    <div className="loading">
       <FontAwesomeIcon icon="fa-solid fa-gear" className="gear__big" />
-      <FontAwesomeIcon icon="fa-solid fa-gear" className="gear__small" />
     </div>
   );
 };
 
-export default Gear;
+export default Loading;

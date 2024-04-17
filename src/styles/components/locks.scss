@@ -1,14 +1,36 @@
 .locks-container {
   max-width: 90%;
-  margin: 10px;
+  margin: 20px;
   padding: 10px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
+  &__text-box {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    align-items: center;
+    margin-top: 20px;
+  }
+
   &__title {
     color: #333;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px;
+  }
+
+  &__user-name {
+    color: #898686;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 35px;
+  }
+
+  &__wellcome {
+    color: #333;
+    text-align: justify;
+    margin: 15px;
+    font-size: 25px;
   }
 }

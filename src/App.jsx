@@ -1,17 +1,21 @@
 import Locks from './components/Locks';
+import Loading from './components/Loading';
 import LockDetail from './components/LockDetail';
-
-import { HashRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
+
+import { Suspense } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
   return (
     <HashRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/locks" element={<Locks />} />
-        <Route path="/lock/:id" element={<LockDetail />} />
-      </Routes>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/locks" element={<Locks />} />
+          <Route path="/lock/:id" element={<LockDetail />} />
+        </Routes>
+      </Suspense>
     </HashRouter>
   );
 };

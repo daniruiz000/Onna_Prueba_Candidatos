@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchDto } from '../utils/fetchFunctions';
+
 import BackButton from './BackButton';
 import LockDetails from './LockDetails';
 import StatusMessage from './StatusMessage';
 import PasswordList from './PasswordList';
 import NewPasswordForm from './NewPasswordForm';
 import LockActions from './LockActions';
+import Separator from './Separator';
 
 const LockDetail = () => {
   const { id } = useParams();
@@ -88,6 +90,7 @@ const LockDetail = () => {
     <div className="lock-detail">
       <BackButton />
       <LockDetails actualLock={actualLock} lockId={actualLock.lockId} />
+      <Separator />
       <div className="lock-detail__tabs">
         <button className={`lock-detail__tab ${activeTab === 'passwords' ? 'active' : ''}`} onClick={() => handleTabChange('passwords')}>
           PASSWORDS
@@ -96,11 +99,13 @@ const LockDetail = () => {
           ACTIONS
         </button>
       </div>
+
       {activeTab === 'passwords' && (
         <div>
           <PasswordList lockPasswords={lockPasswords} handleDeletePassword={handleDeletePassword} />{' '}
         </div>
       )}
+
       {activeTab === 'actions' && (
         <div className="lock-detail__actions">
           <LockActions lockId={actualLock.lockId} fetchData={fetchData} />
