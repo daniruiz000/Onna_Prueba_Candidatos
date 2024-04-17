@@ -12,13 +12,13 @@ const LockItem = ({ lock }) => {
   };
 
   return (
-    <div className="lock-item" onClick={handleNavigate}>
+    <button className="lock-item" onClick={handleNavigate}>
       <div className="lock-item__data-container">
         <h3 className="lock-item__alias">{lock.lockAlias}</h3>
         <Battery electricQuantity={lock.electricQuantity} />
       </div>
       <Gear />
-    </div>
+    </button>
   );
 };
 
