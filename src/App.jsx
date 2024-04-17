@@ -1,7 +1,7 @@
-import Locks from './components/Locks';
+import Locks from './pages/Locks';
 import Loading from './components/Loading';
-import LockDetail from './components/LockDetail';
-import Login from './components/Login';
+import LockDetail from './pages/LockDetail';
+import Login from './pages/Login';
 
 import { Suspense } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';

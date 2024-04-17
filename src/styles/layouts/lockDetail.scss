@@ -133,7 +133,9 @@
   }
 
   &__password-delete {
-    background-color: #f44336;
+    background-color: #c82419;
+    font-weight: bold;
+    text-transform: uppercase;
     color: #fff;
     border: none;
     padding: 5px 10px;
@@ -149,7 +151,7 @@
 
   &__new-password {
     width: 300px;
-    margin-top: 20px;
+    margin: 20px auto;
   }
 
   &__new-password-title {

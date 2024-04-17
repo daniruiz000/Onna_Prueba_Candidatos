@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchDto } from '../utils/fetchFunctions';
+import { fetchDto } from '../../utils/fetchFunctions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LockOpenStatus = ({ lockId }) => {

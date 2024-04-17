@@ -1,5 +1,5 @@
 import LockOpenStatus from './LockOpenStatus';
-import Battery from './Battery';
+import Battery from '../Battery';
 
 const LockDetails = ({ actualLock }) => {
   return (

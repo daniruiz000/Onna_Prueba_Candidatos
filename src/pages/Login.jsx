@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from './Header';
+import Header from '../components/Header';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,10 +10,10 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const storedUsername = import.meta.env.VITE_REACT_APP_USERNAME;
+    const username = import.meta.env.VITE_REACT_APP_USERNAME;
     const storedPassword = import.meta.env.VITE_REACT_APP_PASSWORD;
 
-    if (username === storedUsername && password === storedPassword) {
+    if (username === username && password === storedPassword) {
       navigate('/locks');
     } else {
       setError('Usuario o contraseña incorrectos');

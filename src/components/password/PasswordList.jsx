@@ -1,4 +1,4 @@
-import { fetchDto } from '../utils/fetchFunctions';
+import { fetchDto } from '../../utils/fetchFunctions';
 
 const PasswordList = ({ lockPasswords, handleDeletePassword }) => {
   const getTypeDescription = (type) => {

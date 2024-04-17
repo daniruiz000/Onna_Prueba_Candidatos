@@ -2,14 +2,14 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchDto } from '../utils/fetchFunctions';
 
-import BackButton from './BackButton';
-import LockDetails from './LockDetails';
-import StatusMessage from './StatusMessage';
-import PasswordList from './PasswordList';
-import NewPasswordForm from './NewPasswordForm';
-import LockActions from './LockActions';
-import Separator from './Separator';
-import Header from './Header';
+import BackButton from '../components/BackButton';
+import LockDetails from '../components/lock/LockDetails';
+import StatusMessage from '../components/lock/StatusMessage';
+import PasswordList from '../components/password/PasswordList';
+import NewPasswordForm from '../components/password/NewPasswordForm';
+import LockActions from '../components/lock/LockActions';
+import Separator from '../components/Separator';
+import Header from '../components/Header';
 
 const LockDetail = () => {
   const { id } = useParams();
@@ -105,7 +105,7 @@ const LockDetail = () => {
 
         {activeTab === 'passwords' && (
           <div>
-            <PasswordList lockPasswords={lockPasswords} handleDeletePassword={handleDeletePassword} />{' '}
+            <PasswordList lockPasswords={lockPasswords} handleDeletePassword={handleDeletePassword} />
           </div>
         )}
 

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import Battery from './Battery';
-import Gear from './Gear';
+import Battery from '../Battery';
+import Gear from '../Gear';
 
 const LockItem = ({ lock }) => {
   const navigate = useNavigate();
