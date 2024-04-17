@@ -12,6 +12,12 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
+  &__back-button {
+    align-self: flex-start;
+    border: none;
+    background-color: transparent;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -81,6 +87,10 @@
     }
   }
 
+  &__password-name {
+    color: $black;
+    margin-right: 5px;
+  }
   &__password-value {
     font-weight: bold;
     color: #333;

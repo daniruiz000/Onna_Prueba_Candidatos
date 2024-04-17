@@ -1,7 +1,11 @@
-import { useParams } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import { fetchDto } from '../utils/fetchFunctions';
-import Battery from './Battery';
+import BackButton from './BackButton';
+import LockDetails from './LockDetails';
+import StatusMessage from './StatusMessage';
+import PasswordList from './PasswordList';
+import NewPasswordForm from './NewPasswordForm';
 
 const LockDetail = () => {
   const { id } = useParams();
@@ -69,113 +73,27 @@ const LockDetail = () => {
     }
   };
 
-  const getTypeDescription = (type) => {
-    switch (type) {
-      case 1:
-        return 'Una vez';
-      case 2:
-        return 'Permanente';
-      case 3:
-        return 'Por un período';
-
-      default:
-        return 'Desconocido';
-    }
-  };
-
-  if (loading) return <p className="lock-detail__loading">Cargando detalles de la cerradura...</p>;
-  if (error) return <p className="lock-detail__error">Error: {error}</p>;
-  if (!actualLock) return <p className="lock-detail__not-found">No se encontraron detalles para la cerradura.</p>;
+  if (loading) return <StatusMessage message="Cargando detalles de la cerradura..." type="loading" />;
+  if (error) return <StatusMessage message={`Error: ${error}`} type="error" />;
+  if (!actualLock) return <StatusMessage message="No se encontraron detalles para la cerradura." type="not-found" />;
 
   return (
     <div className="lock-detail">
-      <div className="lock-detail__container">
-        <h3 className="lock-detail__alias">{actualLock.lockAlias}</h3>
-        <p className="lock-detail__model">
-          <strong>Modelo:</strong> {actualLock.modelNum}
-        </p>
-        <p className="lock-detail__battery">
-          <strong>Batería:</strong> {actualLock.electricQuantity}%
-        </p>
-        <p className="lock-detail__privacy">
-          <strong>Privacidad Activada:</strong> {actualLock.privacyLock ? 'Sí' : 'No'}
-        </p>
-        <p className="lock-detail__auto-lock">
-          <strong>Auto-lock (segundos):</strong> {actualLock.autoLockTime}
-        </p>
-        <Battery electricQuantity={actualLock.electricQuantity} />
-      </div>
-
+      <BackButton />
+      <LockDetails actualLock={actualLock} />
       <div className="lock-detail__passwords-content">
-        <h4 className="lock-detail__passwords-title">CONTRASEÑAS ASOCIADAS:</h4>
-        <ul className="lock-detail__passwords-list">
-          {lockPasswords.map((pwd) => (
-            <li key={pwd.keyboardPwdId} className="lock-detail__password-item">
-              <div className="lock-detail__password-property">
-                Nombre:
-                <span className="lock-detail__password-value">{pwd.keyboardPwdName || pwd.keyboardPwdId}</span>
-              </div>
-              <div className="lock-detail__password-property">
-                Password:
-                <span className="lock-detail__password-value">{pwd.keyboardPwd}</span>
-              </div>
-              <div className="lock-detail__password-property">
-                Acceso:
-                <span className="lock-detail__password-value">{getTypeDescription(pwd.keyboardPwdType)}</span>
-              </div>
-              <div className="lock-detail__password-property">
-                Fecha de Activación:
-                <span className="lock-detail__password-value">{fetchDto.formatTimestamp(pwd.startDate)}</span>
-              </div>
-              <div className="lock-detail__password-property">
-                Fecha de Desactivación:
-                <span className="lock-detail__password-value">{fetchDto.formatTimestamp(pwd.endDate)}</span>
-              </div>
-              <button onClick={() => handleDeletePassword(pwd.keyboardPwdId)} className="lock-detail__password-delete">
-                Eliminar
-              </button>
-            </li>
-          ))}
-        </ul>
-
-        <div className="lock-detail__new-password">
-          <h4 className="lock-detail__new-password-title">Crear Nueva Contraseña:</h4>
-          <div className="lock-detail__new-password-inputs">
-            <input
-              type="text"
-              value={passwordName}
-              onChange={(e) => setPasswordName(e.target.value)}
-              placeholder="Nombre de la contraseña (opcional)"
-              className="lock-detail__new-password-name"
-            />
-            <input
-              type="datetime-local"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              placeholder="Fecha de inicio"
-              className="lock-detail__new-password-start-date"
-            />
-            <input
-              type="datetime-local"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              placeholder="Fecha de fin"
-              className="lock-detail__new-password-end-date"
-            />
-            <select
-              value={passwordType}
-              onChange={(event) => setPasswordType(event.target.value)}
-              className="lock-detail__new-password-type"
-            >
-              <option value="1">Una vez</option>
-              <option value="2">Permanente</option>
-              <option value="3">Por un período</option>
-            </select>
-          </div>
-          <button onClick={handleCreatePassword} className="lock-detail__new-password-create">
-            Crear
-          </button>
-        </div>
+        <PasswordList lockPasswords={lockPasswords} handleDeletePassword={handleDeletePassword} />
+        <NewPasswordForm
+          passwordName={passwordName}
+          startDate={startDate}
+          endDate={endDate}
+          passwordType={passwordType}
+          setPasswordName={setPasswordName}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          setPasswordType={setPasswordType}
+          handleCreatePassword={handleCreatePassword}
+        />
       </div>
     </div>
   );
