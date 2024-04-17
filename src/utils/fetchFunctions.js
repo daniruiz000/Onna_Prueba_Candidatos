@@ -173,6 +173,7 @@ const lockLockViaGateway = async (lockId) => {
     throw new Error('Network error when attempting to lock the lock: ' + error.message);
   }
 };
+
 const emergencyLock = async (lockId, autoLockTime = 0) => {
   const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
   const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
@@ -283,10 +284,10 @@ const getLockOpenStatus = async (lockId) => {
     if (response.ok) {
       const data = await response.json();
       if (data.state === 0) {
-        return 'open';
+        return 'closed';
       }
       if (data.state === 1) {
-        return 'closed';
+        return 'open';
       }
     } else {
       throw new Error('Failed to fetch lock open status: ' + response.statusText);

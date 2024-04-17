@@ -6,6 +6,7 @@ import LockDetails from './LockDetails';
 import StatusMessage from './StatusMessage';
 import PasswordList from './PasswordList';
 import NewPasswordForm from './NewPasswordForm';
+import LockActions from './LockActions';
 
 const LockDetail = () => {
   const { id } = useParams();
@@ -112,7 +113,7 @@ const LockDetail = () => {
       )}
       {activeTab === 'actions' && (
         <div className="lock-detail__actions">
-          <p>Componentes de acciones...</p>
+          <LockActions lockId={actualLock.lockId} fetchData={fetchData} />
         </div>
       )}
     </div>

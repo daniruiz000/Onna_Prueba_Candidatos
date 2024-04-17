@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import LockOpenStatus from './LockOpenStatus';
 import Battery from './Battery';
 

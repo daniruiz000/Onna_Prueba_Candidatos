@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { fetchDto } from '../utils/fetchFunctions';
 
 const PasswordList = ({ lockPasswords, handleDeletePassword }) => {
@@ -33,11 +32,11 @@ const PasswordList = ({ lockPasswords, handleDeletePassword }) => {
             <span className="lock-detail__password-value">{getTypeDescription(password.keyboardPwdType)}</span>
           </div>
           <div className="lock-detail__password-property">
-            <span className="lock-detail__password-name">Fecha de Activación:</span>
+            <span className="lock-detail__password-name">Activación:</span>
             <span className="lock-detail__password-value">{fetchDto.formatTimestamp(password.startDate)}</span>
           </div>
           <div className="lock-detail__password-property">
-            <span className="lock-detail__password-name">Fecha de Desactivación:</span>
+            <span className="lock-detail__password-name">Desactivación:</span>
             <span className="lock-detail__password-value">{fetchDto.formatTimestamp(password.endDate)}</span>
           </div>
           <button onClick={() => handleDeletePassword(password.keyboardPwdId)} className="lock-detail__password-delete">
