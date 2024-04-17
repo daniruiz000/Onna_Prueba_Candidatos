@@ -228,28 +228,6 @@ const emergencyUnlock = async (lockId) => {
   }
 };
 
-const getServerTimestamp = async () => {
-  const API_URL = 'https://api.rentandpass.com/api';
-
-  try {
-    const response = await fetch(`${API_URL}/clients/getTimestamp`, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-      },
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      return data.timestamp;
-    } else {
-      throw new Error('Failed to fetch server timestamp: ' + response.statusText);
-    }
-  } catch (error) {
-    throw new Error('Network error when attempting to fetch server timestamp: ' + error.message);
-  }
-};
-
 const formatTimestamp = (timestamp) => {
   const date = new Date(timestamp);
   const options = {
@@ -307,7 +285,7 @@ export const fetchDto = {
   lockLockViaGateway,
   emergencyLock,
   emergencyUnlock,
-  getServerTimestamp,
+
   formatTimestamp,
   getLockOpenStatus,
 };

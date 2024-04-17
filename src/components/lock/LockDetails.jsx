@@ -6,7 +6,7 @@ const LockDetails = ({ actualLock }) => {
     <div className="lock-detail__container">
       <h3 className="lock-detail__alias">{actualLock.lockAlias}</h3>
       <p className="lock-detail__model">
-        <strong>Modelo:</strong> {actualLock.modelNum}
+        <strong>Modelo: {actualLock.modelNum}</strong>
       </p>
       <p className="lock-detail__privacy">
         <strong>Privacidad Activada:</strong> {actualLock.privacyLock ? 'Sí' : 'No'}
