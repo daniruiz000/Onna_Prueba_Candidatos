@@ -37,11 +37,12 @@
   &__button {
     padding: 10px 20px;
     margin-top: 10px;
-    background-color: $grey;
+    background-color: #0f86ff;
     color: #fff;
     border: none;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 14px;
+    text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.3s;
     width: 70%;
