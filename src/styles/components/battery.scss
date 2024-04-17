@@ -1,0 +1,15 @@
+.battery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__icon {
+    font-size: 50px;
+    margin-right: 10px;
+  }
+
+  &__charge {
+    font-size: 20px;
+    color: $grey;
+  }
+}

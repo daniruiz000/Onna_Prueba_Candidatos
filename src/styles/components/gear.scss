@@ -1,0 +1,22 @@
+.gear {
+  width: 75px;
+  height: 75px;
+  position: relative;
+  color: $grey;
+
+  &__big {
+    position: absolute;
+    top: 20px;
+    right: 14px;
+    color: $grey;
+    font-size: 50px;
+  }
+
+  &__small {
+    position: absolute;
+    top: 2px;
+    right: 7px;
+    color: $black;
+    font-size: 25px;
+  }
+}
