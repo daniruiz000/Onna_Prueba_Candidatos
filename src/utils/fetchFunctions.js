@@ -285,7 +285,6 @@ export const fetchDto = {
   lockLockViaGateway,
   emergencyLock,
   emergencyUnlock,
-
   formatTimestamp,
   getLockOpenStatus,
 };

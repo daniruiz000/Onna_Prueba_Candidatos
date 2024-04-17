@@ -83,7 +83,7 @@ const LockDetail = () => {
     setActiveTab(tab);
   };
 
-  if (loading) return <StatusMessage message="Cargando detalles de la cerradura..." type="loading" />;
+  if (loading) return <StatusMessage message="Cargando cerradura..." type="loading" />;
   if (error) return <StatusMessage message={`Error: ${error}`} type="error" />;
   if (!actualLock) return <StatusMessage message="No se encontraron detalles para la cerradura." type="not-found" />;
 
