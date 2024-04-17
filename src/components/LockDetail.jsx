@@ -67,6 +67,7 @@ const LockDetail = () => {
       );
       if (result.keyboardPwdId) {
         fetchData();
+        handleTabChange('passwords');
       } else {
         throw new Error('Fallo al Crear la Contraseña: ' + (result.errmsg || 'No error message'));
       }
@@ -98,6 +99,11 @@ const LockDetail = () => {
       {activeTab === 'passwords' && (
         <div>
           <PasswordList lockPasswords={lockPasswords} handleDeletePassword={handleDeletePassword} />{' '}
+        </div>
+      )}
+      {activeTab === 'actions' && (
+        <div className="lock-detail__actions">
+          <LockActions lockId={actualLock.lockId} fetchData={fetchData} />
           <NewPasswordForm
             passwordName={passwordName}
             startDate={startDate}
@@ -109,11 +115,6 @@ const LockDetail = () => {
             setPasswordType={setPasswordType}
             handleCreatePassword={handleCreatePassword}
           />
-        </div>
-      )}
-      {activeTab === 'actions' && (
-        <div className="lock-detail__actions">
-          <LockActions lockId={actualLock.lockId} fetchData={fetchData} />
         </div>
       )}
     </div>

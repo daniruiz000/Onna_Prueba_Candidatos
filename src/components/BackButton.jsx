@@ -5,7 +5,7 @@ const BackButton = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/`);
+    navigate(`/locks`);
   };
 
   return (
