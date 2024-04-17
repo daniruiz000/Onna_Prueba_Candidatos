@@ -35,23 +35,5 @@
         background-color: #d32f2f;
       }
     }
-
-    &--emergency-lock {
-      background-color: #ff9800;
-      color: #fff;
-
-      &:hover {
-        background-color: #f57c00;
-      }
-    }
-
-    &--emergency-unlock {
-      background-color: #2196f3;
-      color: #fff;
-
-      &:hover {
-        background-color: #1976d2;
-      }
-    }
   }
 }
