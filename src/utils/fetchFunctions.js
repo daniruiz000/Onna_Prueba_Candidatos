@@ -71,9 +71,11 @@ const generateLockPassword = async (lockId, type, name, startDate, endDate) => {
   const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
   const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
   const CLIENT_TOKEN = import.meta.env.VITE_REACT_APP_CLIENT_TOKEN;
+  const formattedStartDate = new Date(startDate).getTime(); // Ensuring the date is in milliseconds
+  const formattedEndDate = new Date(endDate).getTime(); // Ensuring the date is in milliseconds
 
   try {
-    const url = `${API_URL}/password?clientId=${CLIENT_ID}&token=${CLIENT_TOKEN}&ID=${lockId}&type=${type}&name=${name}&startDate=${startDate}&endDate=${endDate}`;
+    const url = `${API_URL}/password?clientId=${CLIENT_ID}&token=${CLIENT_TOKEN}&ID=${lockId}&type=${type}&name=${name}&startDate=${formattedStartDate}&endDate=${formattedEndDate}`;
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -91,7 +93,6 @@ const generateLockPassword = async (lockId, type, name, startDate, endDate) => {
     throw new Error('Network error when attempting to generate password: ' + error.message);
   }
 };
-
 const deleteLockPassword = async (lockId, passID, type) => {
   const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
   const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;

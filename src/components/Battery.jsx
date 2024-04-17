@@ -1,7 +1,10 @@
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getBatteryIconAndColor } from '../utils/bateryFunctions';
 
-const Battery = ({ icon, color, electricQuantity }) => {
+const Battery = ({ electricQuantity }) => {
+  const { icon, color } = getBatteryIconAndColor(electricQuantity);
+
   return (
     <div className="battery">
       <FontAwesomeIcon className="battery__icon" icon={icon} style={{ color: color }} />
