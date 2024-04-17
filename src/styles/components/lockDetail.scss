@@ -33,16 +33,17 @@
   &__tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin: 20px;
+    margin-bottom: 5px;
   }
 
   &__tab {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    margin: 0 10px;
+    font-size: 22px;
+    padding: 10px;
+    margin: 10px;
     color: #666;
     transition: color 0.3s;
 

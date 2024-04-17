@@ -8,9 +8,6 @@ const LockDetails = ({ actualLock }) => {
       <p className="lock-detail__model">
         <strong>Modelo:</strong> {actualLock.modelNum}
       </p>
-      <p className="lock-detail__battery">
-        <strong>Batería:</strong> {actualLock.electricQuantity}%
-      </p>
       <p className="lock-detail__privacy">
         <strong>Privacidad Activada:</strong> {actualLock.privacyLock ? 'Sí' : 'No'}
       </p>
