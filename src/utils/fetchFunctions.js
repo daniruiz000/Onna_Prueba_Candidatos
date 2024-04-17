@@ -266,6 +266,36 @@ const formatTimestamp = (timestamp) => {
   return formatter.format(date);
 };
 
+const getLockOpenStatus = async (lockId) => {
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
+  const CLIENT_TOKEN = import.meta.env.VITE_REACT_APP_CLIENT_TOKEN;
+
+  try {
+    const url = `${API_URL}/lock/openStatus?clientId=${CLIENT_ID}&token=${CLIENT_TOKEN}&ID=${lockId}`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data.state === 0) {
+        return 'open';
+      }
+      if (data.state === 1) {
+        return 'closed';
+      }
+    } else {
+      throw new Error('Failed to fetch lock open status: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Network error when attempting to fetch lock open status: ' + error.message);
+  }
+};
+
 export const fetchDto = {
   getAllLocksByClientId,
   getLockDetailById,
@@ -278,4 +308,5 @@ export const fetchDto = {
   emergencyUnlock,
   getServerTimestamp,
   formatTimestamp,
+  getLockOpenStatus,
 };

@@ -1,0 +1,32 @@
+.lock-open-status {
+  font-size: 15px;
+  border: 5px solid;
+  border-color: black;
+  border-radius: 50%;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+
+  &__text {
+    font-size: 15px;
+    margin-left: 10px;
+    color: $grey;
+  }
+
+  &.unknown {
+    color: $grey;
+  }
+
+  &.open {
+    color: green;
+  }
+
+  &.closed {
+    color: red;
+  }
+}

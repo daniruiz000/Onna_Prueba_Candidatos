@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import LockOpenStatus from './LockOpenStatus';
 import Battery from './Battery';
 
 const LockDetails = ({ actualLock }) => {
@@ -18,7 +18,10 @@ const LockDetails = ({ actualLock }) => {
       <p className="lock-detail__auto-lock">
         <strong>Auto-lock (segundos):</strong> {actualLock.autoLockTime}
       </p>
-      <Battery electricQuantity={actualLock.electricQuantity} />
+      <div className="lock-detail__status-container">
+        <Battery electricQuantity={actualLock.electricQuantity} />
+        <LockOpenStatus lockId={actualLock.lockId} />
+      </div>
     </div>
   );
 };
