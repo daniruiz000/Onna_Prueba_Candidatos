@@ -9,10 +9,10 @@ const LockDetail = () => {
   const [lockPasswords, setLockPasswords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [passwordType, setPasswordType] = useState('2'); // Default type: permanent
+  const [passwordType, setPasswordType] = useState('2');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [passwordName, setPasswordName] = useState(''); // Optional name for the password
+  const [passwordName, setPasswordName] = useState('');
 
   const fetchData = useCallback(async () => {
     try {
