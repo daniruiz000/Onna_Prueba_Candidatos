@@ -43,8 +43,238 @@ const getLockDetailById = async (lockId) => {
     throw new Error('Failed to fetch data');
   }
 };
+const getLockPasswords = async (lockId, firstPage = 1, itemsPerPage = 20) => {
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
+  const CLIENT_TOKEN = import.meta.env.VITE_REACT_APP_CLIENT_TOKEN;
+
+  try {
+    const url = `${API_URL}/lock/passwords?clientId=${CLIENT_ID}&token=${CLIENT_TOKEN}&ID=${lockId}&firstPage=${firstPage}&itemsPerPage=${itemsPerPage}`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to fetch passwords: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Network error when attempting to fetch passwords: ' + error.message);
+  }
+};
+const generateLockPassword = async (lockId, type, name, startDate, endDate) => {
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
+  const CLIENT_TOKEN = import.meta.env.VITE_REACT_APP_CLIENT_TOKEN;
+
+  try {
+    const url = `${API_URL}/password?clientId=${CLIENT_ID}&token=${CLIENT_TOKEN}&ID=${lockId}&type=${type}&name=${name}&startDate=${startDate}&endDate=${endDate}`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to generate password: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Network error when attempting to generate password: ' + error.message);
+  }
+};
+
+const deleteLockPassword = async (lockId, passID, type) => {
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
+  const CLIENT_TOKEN = import.meta.env.VITE_REACT_APP_CLIENT_TOKEN;
+
+  try {
+    const url = `${API_URL}/password`;
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+      },
+      body: `clientId=${CLIENT_ID}&token=${CLIENT_TOKEN}&ID=${lockId}&passID=${passID}&type=${type}`,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to delete password: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Network error when attempting to delete password: ' + error.message);
+  }
+};
+
+const unlockLockViaGateway = async (lockId) => {
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
+  const CLIENT_TOKEN = import.meta.env.VITE_REACT_APP_CLIENT_TOKEN;
+
+  try {
+    const url = `${API_URL}/lock/unlock`;
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+      },
+      body: `clientId=${CLIENT_ID}&token=${CLIENT_TOKEN}&ID=${lockId}`,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to unlock the lock: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Network error when attempting to unlock the lock: ' + error.message);
+  }
+};
+
+const lockLockViaGateway = async (lockId) => {
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
+  const CLIENT_TOKEN = import.meta.env.VITE_REACT_APP_CLIENT_TOKEN;
+
+  try {
+    const url = `${API_URL}/lock/lock`;
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+      },
+      body: `clientId=${CLIENT_ID}&token=${CLIENT_TOKEN}&ID=${lockId}`,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to lock the lock: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Network error when attempting to lock the lock: ' + error.message);
+  }
+};
+const emergencyLock = async (lockId, autoLockTime = 0) => {
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
+  const CLIENT_TOKEN = import.meta.env.VITE_REACT_APP_CLIENT_TOKEN;
+
+  try {
+    const url = `${API_URL}/lock/emergencyLock`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+      },
+      body: `clientId=${CLIENT_ID}&token=${CLIENT_TOKEN}&ID=${lockId}&autoLockTime=${autoLockTime}`,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to set emergency lock: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Network error when attempting to set emergency lock: ' + error.message);
+  }
+};
+
+const emergencyUnlock = async (lockId) => {
+  const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
+  const CLIENT_ID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
+  const CLIENT_TOKEN = import.meta.env.VITE_REACT_APP_CLIENT_TOKEN;
+
+  try {
+    const url = `${API_URL}/lock/emergencyUnlock`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+      },
+      body: `clientId=${CLIENT_ID}&token=${CLIENT_TOKEN}&ID=${lockId}`,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      throw new Error('Failed to set emergency unlock: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Network error when attempting to set emergency unlock: ' + error.message);
+  }
+};
+
+const getServerTimestamp = async () => {
+  const API_URL = 'https://api.rentandpass.com/api';
+
+  try {
+    const response = await fetch(`${API_URL}/clients/getTimestamp`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.timestamp;
+    } else {
+      throw new Error('Failed to fetch server timestamp: ' + response.statusText);
+    }
+  } catch (error) {
+    throw new Error('Network error when attempting to fetch server timestamp: ' + error.message);
+  }
+};
+
+const formatTimestamp = (timestamp) => {
+  const date = new Date(timestamp);
+  const options = {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+    timeZone: 'Europe/Madrid',
+  };
+
+  const formatter = new Intl.DateTimeFormat('es-ES', options);
+  return formatter.format(date);
+};
 
 export const fetchDto = {
   getAllLocksByClientId,
   getLockDetailById,
+  getLockPasswords,
+  generateLockPassword,
+  deleteLockPassword,
+  unlockLockViaGateway,
+  lockLockViaGateway,
+  emergencyLock,
+  emergencyUnlock,
+  getServerTimestamp,
+  formatTimestamp,
 };

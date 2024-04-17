@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Gear = () => {
+const Gear = ({ onClick }) => {
   return (
-    <div className="gear">
+    <button className="gear" onClick={onClick}>
       <FontAwesomeIcon icon="fa-solid fa-gear" className="gear__big" />
       <FontAwesomeIcon icon="fa-solid fa-gear" className="gear__small" />
-    </div>
+    </button>
   );
 };
 
