@@ -10,10 +10,10 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const username = import.meta.env.VITE_REACT_APP_USERNAME;
+    const storedUsername = import.meta.env.VITE_REACT_APP_USERNAME;
     const storedPassword = import.meta.env.VITE_REACT_APP_PASSWORD;
 
-    if (username === username && password === storedPassword) {
+    if (username === storedUsername && password === storedPassword) {
       navigate('/locks');
     } else {
       setError('Usuario o contraseña incorrectos');
